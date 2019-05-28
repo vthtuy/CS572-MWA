@@ -1,0 +1,13 @@
+Explain how does this function (removeNum asynchronous) affect the event-loop?
+
+The js code runs single thread. It means there is 1 thing executing at a time.
+Browser has an event loop for every Browser tab. Event loop makes everything process isolated
+and avoid infinite loop on a web page or heavy processing to block the browser.
+
+The execution order for all the functions (iterations) in call stack:
+- console.log('Start');
+- Promise pending state
+- console.log('Finish');  [wait for Promise returns fulfilled or rejected state but continue execute its work]
+- Promise.resolved call back function
+
+The event loop execute each iteration in above call stack until the call stack is empty.
