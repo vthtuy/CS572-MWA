@@ -50,22 +50,23 @@ function readFile(req,res) {
         // console.log(chunk);
         result = result + chunk;
        // result.push(chunk);
-    }).on('end', function() {
-      response.write(result);
-      response.end();
-   });
-    console.log(result.toString());
-    res.write(result.toString());
-    res.end();
+    });
+    readable.on('end', function() {
+      res.write(result);
+      res.end();
+   }); 
 
  }
 
  // ============= Read File With Stream pipe() ================
  http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    var data = readFileStreamPipe(res);
-    console.log(data);
-    res.end('Hello World!');
+   // var data = readFileStreamPipe(res);
+   var result = fs.createReadStream(FILE, ENCODING).pipe(res);
+   // console.log(data);
+   // error
+   res.write(result.toString());
+   res.end();
 }).listen( 4003, () =>  console.log('listening on 4003 readFileStreamPipe') );
  function readFileStreamPipe(res) {
     return fs.createReadStream(FILE, ENCODING).pipe(res);
