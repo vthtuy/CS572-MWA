@@ -48,9 +48,12 @@ function readFile(req,res) {
     var result = [];
     readable.on('data', function(chunk) {
         // console.log(chunk);
-       // result = result + chunk;
-       result.push(chunk);
-    });
+        result = result + chunk;
+       // result.push(chunk);
+    }).on('end', function() {
+      response.write(result);
+      response.end();
+   });
     console.log(result.toString());
     res.write(result.toString());
     res.end();
