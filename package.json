@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/vthtuy/CS572-MWA#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cluster": "^0.7.7",
+    "express": "^4.17.1",
+    "os": "^0.1.1",
+    "rxjs": "^6.5.2"
   }
 }
