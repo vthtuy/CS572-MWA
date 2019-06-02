@@ -30,8 +30,7 @@ function proceedFile(reqres) {
             res.write("Read File Done!!!")
         } else {
             // receive file content chunk by chunk
-            var chunk = message ;
-            
+            var chunk = message ;            
             res.write(chunk);
         }
 
