@@ -6,19 +6,14 @@ process.on('message', (fileName) => {
     console.log('Child Process file name: ', fileName);
     FILE = fileName;
 
-    readFileStream(FILE);
-    //process.send(sum);
-    //process.exit(1);
+    readFileStream(FILE);  
 }); 
 
 function readFileStream(fileName) {
 
     var readable = fs.createReadStream(FILE, ENCODING);
     var result = [];
-    readable.on('data', function(chunk) {
-        // console.log(chunk);
-      //  result = result + chunk;
-       // result.push(chunk);
+    readable.on('data', function(chunk) { 
        process.send(chunk);
     });
     readable.on('end', function() {

@@ -62,12 +62,12 @@ function readFile(req,res) {
  http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
    // var data = readFileStreamPipe(res);
-   var result = fs.createReadStream(FILE, ENCODING).pipe(res);
-   // console.log(data);
-   // error
-   res.write(result.toString());
-   res.end();
+   var result = fs.createReadStream(FILE, ENCODING).pipe(res); 
+
+   // no need to end 
+   //res.end(); 
 }).listen( 4003, () =>  console.log('listening on 4003 readFileStreamPipe') );
+
  function readFileStreamPipe(res) {
     return fs.createReadStream(FILE, ENCODING).pipe(res);
  }

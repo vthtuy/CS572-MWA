@@ -43,7 +43,8 @@ app.set('strict routing', true);
 app.set('case sensitive routing', true);
 // working behind proxy
 app.set('trust proxy', true);
-app.set('Link', "rel='first'")
+app.set('Link', "rel='first'");
+app.set('Cache-Control', "private");
 
 module.exports = app;
 process.env.PORT = 3000;

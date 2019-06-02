@@ -23,6 +23,7 @@ async function getUserData(res) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  res.set({'Cache-Control' : 'private, max-age=86400'});
   // ================ using async/await ==================
   // getUserData(res);
   
