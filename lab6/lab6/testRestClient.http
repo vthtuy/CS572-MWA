@@ -1,0 +1,50 @@
+
+GET http://localhost:3000/grades
+
+###
+
+GET http://localhost:3000/grades?id=1 
+
+###
+GET http://localhost:3000/grades/20
+
+### insert
+
+POST http://localhost:3000/grades
+content-type: application/json
+
+{
+    "id" : 10,
+    "name": "tuy vo 10",
+    "time": "Wed, 4 June 2019 18:27:50 GMT",
+    "course" : "CS572"
+}
+
+### update
+
+PUT http://localhost:3000/grades
+content-type: application/json
+
+{
+    "id" : 1,
+    "name": "tuy vo 1",
+    "time": "Wed, 2 June 2019 18:27:50 GMT",
+    "course" : "CS572"
+}
+
+### delete
+DELETE  http://localhost:3000/grades
+content-type: application/json
+
+{
+    "id" : 2,
+    "name": "tuy vo 2",
+    "time": "Wed, 5 June 2019 18:27:50 GMT",
+    "course" : "CS572"
+}
+ 
+
+
+
+ 
+ 
