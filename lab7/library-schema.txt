@@ -1,0 +1,38 @@
+book collection
+{   
+    _id: ObjectId(),
+    isbn: '9080',
+    author: {name: 'Malina', address: 'Fairfield, IA'},
+    keywords: [
+                {javascript}, 
+                {node}, 
+                {backend}
+            ],
+    borrowings: [
+                {studentid : '986812', borrowedDate : date, expiredDate: date}, 
+                {studentid : '986813', borrowedDate : date, expiredDate: date}
+            ]
+}
+
+student collection
+{
+    _id: ObjectId(),
+    studentid: '986812',
+    phone: '123456789',
+    name: 'Tuya',
+    barcode: '1001000100101',
+    address: '1000 N Main St'
+    borrowedBooks:  [{_bookId: ObjectId(), borrowedDate : date, expiredDate: date},
+                    {_bookId: ObjectId(), borrowedDate : date, expiredDate: date}
+                    ]
+}
+
+- The librarian will be able to check all borrowed books and their return date
+borrowedBooks = db.books.find({borrowings: { $exist: true} })
+borrowedBooksAndLate = db.books.find({borrowings: { $exist: true, expiredDate: {$ls: currentDate} } })
+
+- The librarian may contact students who are late returning their books.
+db.student.find( {studentid: {$in: [borrowedBooksAndLate] } } )
+
+// Note:
+We might need the history of borrowed book of student. That is why we have borrowedBooks in student collection.
