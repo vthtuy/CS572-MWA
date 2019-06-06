@@ -9,18 +9,20 @@ function databaseLecture(req) {
 
 /* GET lectures listing. */
 router.get('/', async function(req, res, next) {   
-  const doc = await databaseLecture(req).find({}).toArray(function(err, docArray) { 
-    res.json(docArray); 
-  }); 
+  // const doc = await databaseLecture(req).find({}).toArray(function(err, docArray) { 
+  //   res.json(docArray); 
+  // }); 
   
   // ========== ??? return undefined ???? with cursor???
-  // const cursor = await databaseLecture(req).find({}); 
-  // var docs = [];
-  // cursor.forEach( function(err, doc) {
-  //   console.dir(doc);
-  //   docs.push(doc);
-  // });
-  // res.json(docs);
+  const cursor = await databaseLecture(req).find({}); 
+  var docs = [];
+  cursor.forEach( function(doc) {
+   // console.dir(doc);
+    docs.push(doc);
+    res.json(doc);
+  });
+  //res.json(docs);
+  //res.json({}).status(201);
 });
 
 router.get('/:_id', async function(req, res, next) {  
@@ -60,6 +62,19 @@ router.delete('/', async function(req, res, next) {
     console.log(removed);
      res.json({message : "saved", data : removed});
   });
+});
+
+router.get('/search/:q', async function(req, res, next) {
+  console.log('searching .....')
+  let query = req.params.q;
+  
+  //  {$regex: '^' + query} : start with
+  //  {$regex: query + '$'} : end with
+  //  {$regex: query} : like
+
+  await databaseLecture(req).find({lecture : {$regex: query} }).project({id: 1, lecture: 1}).toArray(function(err, docArr){
+    res.json(docArr);
+  } );
 });
 
 module.exports = router;
