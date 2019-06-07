@@ -72,8 +72,8 @@ POST http://localhost:3000/geo
 content-type: application/json
 
 {
-    "id" : 2,
-    "name" : "Main House",
+    "id" : 6,
+    "name" : "Main House 2",
     "category" : "normal",
     "location" : [-72.844092, 42.466234]
 }
