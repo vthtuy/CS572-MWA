@@ -47,8 +47,11 @@ mongoimport --host Cluster0-shard-0/cluster0-shard-00-00-hiuwf.mongodb.net:27017
 		$group: {_id : '$_id.state', city: {$first: '$_id.city'}, population : {$first : '$population'}  }
 	} ,
 	{$project: {state: '$_id', city: '$city', population: '$population' }}, 
+	
 	{$sort: {state : 1} }
  ])
+ 
+ 
  
  
  

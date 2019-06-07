@@ -28,7 +28,7 @@ router.get('/', async function(req, res, next) {
 router.get('/:_id', async function(req, res, next) {  
   const _id = MongoClient.ObjectID(req.params._id);
   const doc = await databaseLecture(req).findOne({_id : _id}) 
-  res.json({message : "saved", data : doc}); 
+  res.json({message : "ok", data : doc}); 
 });
 
 router.post('/',  async function(req, res, next) {
