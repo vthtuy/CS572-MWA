@@ -11,12 +11,14 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 
     <p> Make Bigger by double click</p>
     <div [ngStyle]="{'font-size': '10px', 'color' : 'green'}" appMakeBigger >Double Click on me - Hello Big World</div>
+
+    {{title | multi:9}}
   `,
   styles: [`p {color: blue}`, ],
   encapsulation : ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'Angular Counter App';
+  title = 'Angular';
   result : number;
   showResult(txtNumber) {
     console.log('main', txtNumber);

@@ -6,6 +6,7 @@ import { SmartComponent } from './smart.component';
 import { DumbComponent } from './dumb.component';
 import { IsVisibleDirective } from './is-visible.directive';
 import { MakeBiggerDirective } from './make-bigger.directive';
+import { MultiPipe } from './multi.pipe';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MakeBiggerDirective } from './make-bigger.directive';
     SmartComponent,
     DumbComponent,
     IsVisibleDirective,
-    MakeBiggerDirective 
+    MakeBiggerDirective,
+    MultiPipe 
   ],
   imports: [
     BrowserModule
